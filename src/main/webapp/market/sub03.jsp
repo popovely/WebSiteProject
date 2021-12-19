@@ -1,8 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../include/global_head.jsp" %>
+<!-- 블루클리닝 견적 의뢰 -->
 
 
+<!-- 청소희망 날짜 datepicker적용 -->
+<head>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+<script>
+$( function() {
+  $( "#datepicker" ).datepicker();
+  $( "#datepicker" ).datepicker("option", "dateFormat", "yy-mm-dd");
+} );
+</script>
+</head>
  <body>
 	<center>
 	<div id="wrap">
@@ -39,10 +53,6 @@
 							<td style="text-align:left;"><input type="text" name=""  value="" class="join_input" style="width:50px;" /> - <input type="text" name=""  value="" class="join_input" style="width:50px;" /> - <input type="text" name=""  value="" class="join_input" style="width:50px;" /></td>
 						</tr>
 						<tr>
-							<th>휴대전화</th>
-							<td style="text-align:left;"><input type="text" name=""  value="" class="join_input" style="width:50px;" /> - <input type="text" name=""  value="" class="join_input" style="width:50px;" /> - <input type="text" name=""  value="" class="join_input" style="width:50px;" /></td>
-						</tr>
-						<tr>
 							<th>이메일</th>
 							<td style="text-align:left;"><input type="text" name=""  value="" class="join_input" style="width:100px;" /> @ <input type="text" name=""  value="" class="join_input" style="width:100px;" /></td>
 						</tr>
@@ -63,7 +73,7 @@
 						</tr>
 						<tr>
 							<th>청소 희망날짜</th>
-							<td style="text-align:left;"><input type="text" name=""  value="" class="join_input" /></td>
+							<td style="text-align:left;"><input type="text" name=""  value="" class="join_input" id="datepicker" /></td>
 						</tr>
 						<tr>
 							<th>접수종류 구분</th>
