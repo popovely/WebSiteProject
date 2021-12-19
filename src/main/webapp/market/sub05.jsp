@@ -1,8 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../include/global_head.jsp" %>
+<!-- 체험학습 신청 -->
 
 
+<!-- 체험희망 날짜 datepicker적용 -->
+<head>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+<script>
+$( function() {
+  $( "#datepicker" ).datepicker();
+  $( "#datepicker" ).datepicker("option", "dateFormat", "yy-mm-dd");
+} );
+</script>
+</head>
  <body>
 	<center>
 	<div id="wrap">
@@ -55,35 +69,7 @@
 							<td style="text-align:left;"><input type="text" name=""  value="" class="join_input" /></td>
 						</tr>
 						<tr>
-							<th>장애유무</th>
-							<td style="text-align:left;" style="padding:0px;">
-								<table cellpadding="0" cellspacing="0" border="0" style="width:100%;">
-									<tr>
-										<td style="border-bottom:0px;"><input type="radio" name=""  value="" /> 유&nbsp;&nbsp;&nbsp;<input type="radio" name=""  value="" /> 무</td>
-										<th style="border-bottom:0px;" width="100px">주요장애유형</th>
-										<td style="border-right:0px; border-bottom:0px;"><input type="text" name=""  value="" class="join_input" /></td>
-									</tr>
-								</table>
-							</td>
-						</tr>
-						<tr>
-							<th>보장구 사용유무</th>
-							<td style="text-align:left;" style="padding:0px;">
-								<table cellpadding="0" cellspacing="0" border="0" style="width:100%;">
-									<tr>
-										<td style="border-bottom:0px;"><input type="radio" name=""  value="" /> 유&nbsp;&nbsp;&nbsp;<input type="radio" name=""  value="" /> 무</td>
-										<th style="border-bottom:0px;" width="100px">보장구 명</th>
-										<td style="border-right:0px; border-bottom:0px;"><input type="text" name=""  value="" class="join_input" /></td>
-									</tr>
-								</table>
-							</td>
-						</tr>
-						<tr>
 							<th>연락처</th>
-							<td style="text-align:left;"><input type="text" name=""  value="" class="join_input" style="width:50px;" /> - <input type="text" name=""  value="" class="join_input" style="width:50px;" /> - <input type="text" name=""  value="" class="join_input" style="width:50px;" /></td>
-						</tr>
-						<tr>
-							<th>담당자 휴대전화</th>
 							<td style="text-align:left;"><input type="text" name=""  value="" class="join_input" style="width:50px;" /> - <input type="text" name=""  value="" class="join_input" style="width:50px;" /> - <input type="text" name=""  value="" class="join_input" style="width:50px;" /></td>
 						</tr>
 						<tr>
@@ -107,7 +93,7 @@
 						</tr>
 						<tr>
 							<th>체험희망날짜</th>
-							<td style="text-align:left;"><input type="text" name=""  value="" class="join_input" /></td>
+							<td style="text-align:left;"><input type="text" name=""  value="" class="join_input" id="datepicker" /></td>
 						</tr>
 						<tr>
 							<th>접수종류 구분</th>
