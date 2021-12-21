@@ -217,12 +217,12 @@ $( function() {
 						</tr>
 						<tr>
 							<th>접수종류 구분</th>
-							<td style="text-align:left;"><input type="radio" name="regi_type"  value="1" checked /> 예약신청
-							&nbsp;&nbsp;&nbsp;<input type="radio" name="regi_type"  value="2" /> 견적문의</td>
+							<td style="text-align:left;"><input type="radio" name="regi_type"  value="예약신청" checked /> 예약신청
+							&nbsp;&nbsp;&nbsp;<input type="radio" name="regi_type"  value="견적문의" /> 견적문의</td>
 						</tr>
 						<tr>
 							<th>기타특이사항</th>
-							<td style="text-align:left;"><input type="text" name="note"  value="" class="join_input" style="width:400px;" /></td>
+							<td style="text-align:left;"><input type="text" name="note"  value="없음" class="join_input" style="width:400px;" /></td>
 						</tr>
 					</tbody>
 				</table>

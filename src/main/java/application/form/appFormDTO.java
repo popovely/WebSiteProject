@@ -13,12 +13,12 @@ public class appFormDTO {
 	private String name;	 // 고객명/회사명
 	private String phone_num;// 연락처
 	private String email;	 // 이메일
-	private int regi_type;	 //접수종류 구분
+	private String regi_type;//접수종류 구분
 	private String note;	 //기타 특이사항
 	// 블루클리닝 멤버변수
-    private int bt_postcode;	// 우편번호
-    private String bt_basicadd;	// 기본주소
-    private String bt_detailadd;// 상세주소
+    private int bc_postcode;	// 우편번호
+    private String bc_basicadd;	// 기본주소
+    private String bc_detailadd;// 상세주소
     private String bc_type;		// 청소종류
     private int bc_space;		// 평수
     private String bc_date;		// 청소 희망날짜
@@ -52,35 +52,11 @@ public class appFormDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getRegi_type() {
-		return regi_type;
-	}
-	public void setRegi_type(int regi_type) {
-		this.regi_type = regi_type;
-	}
 	public String getNote() {
 		return note;
 	}
 	public void setNote(String note) {
 		this.note = note;
-	}
-	public int getBt_postcode() {
-		return bt_postcode;
-	}
-	public void setBt_postcode(int bt_postcode) {
-		this.bt_postcode = bt_postcode;
-	}
-	public String getBt_basicadd() {
-		return bt_basicadd;
-	}
-	public void setBt_basicadd(String bt_basicadd) {
-		this.bt_basicadd = bt_basicadd;
-	}
-	public String getBt_detailadd() {
-		return bt_detailadd;
-	}
-	public void setBt_detailadd(String bt_detailadd) {
-		this.bt_detailadd = bt_detailadd;
 	}
 	public String getBc_type() {
 		return bc_type;
@@ -117,5 +93,29 @@ public class appFormDTO {
 	}
 	public void setFt_date(String ft_date) {
 		this.ft_date = ft_date;
+	}
+	public int getBc_postcode() {
+		return bc_postcode;
+	}
+	public void setBc_postcode(int bc_postcode) {
+		this.bc_postcode = bc_postcode;
+	}
+	public String getBc_basicadd() {
+		return bc_basicadd;
+	}
+	public void setBc_basicadd(String bc_basicadd) {
+		this.bc_basicadd = bc_basicadd;
+	}
+	public String getBc_detailadd() {
+		return bc_detailadd;
+	}
+	public void setBc_detailadd(String bc_detailadd) {
+		this.bc_detailadd = bc_detailadd;
+	}
+	public String getRegi_type() {
+		return regi_type;
+	}
+	public void setRegi_type(String regi_type) {
+		this.regi_type = regi_type;
 	}
 }

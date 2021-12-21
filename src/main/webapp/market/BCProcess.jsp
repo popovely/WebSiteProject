@@ -26,8 +26,8 @@ String bc_date = request.getParameter("bc_date");
 String regi_type = request.getParameter("regi_type");
 String note = request.getParameter("note");
 
- 
-//	확인용
+/*
+//확인용
 out.println("name="+ name +"<br>");
 out.println("address="+ bt_postcode +"<br>"+ bt_basicadd +"<br>"+ bt_detailadd +"<br>");
 out.println("phone_num="+ phone_num +"<br>");
@@ -37,34 +37,36 @@ out.println("bc_space="+ bc_space +"<br>");
 out.println("bc_date="+ bc_date +"<br>");
 out.println("regi_type="+ regi_type +"<br>");
 out.println("note="+ note);
-
-
+*/
 
 // DTO객체 생성
 appFormDTO dto = new appFormDTO();
 dto.setName(name);
-dto.setBt_postcode(Integer.parseInt(bt_postcode));
-dto.setBt_basicadd(bt_basicadd);
-dto.setBt_detailadd(bt_detailadd);
+dto.setBc_postcode(Integer.parseInt(bt_postcode));
+dto.setBc_basicadd(bt_basicadd);
+dto.setBc_detailadd(bt_detailadd);
 dto.setPhone_num(phone_num);
 dto.setEmail(email);
 dto.setBc_type(bc_type);
 dto.setBc_space(Integer.parseInt(bc_space));
 dto.setBc_date(bc_date);
-dto.setRegi_type(Integer.parseInt(regi_type));
+dto.setRegi_type(regi_type);
 dto.setNote(note);
 
 /* 이메일 전송 */
 Map<String, String> emailInfo = new HashMap<String, String>();
 emailInfo.put("from", "bbi-bbi-@naver.com");
 emailInfo.put("to", dto.getEmail());
-emailInfo.put("subject", "블루클리닝 신청서");
+emailInfo.put("subject", "[마포구립장애인 직업재활센터] 블루클리닝 신청정보 안내");
 
-String content = dto.getName() + "<br>"
-			+ dto.getBt_postcode() + "<br>"
-			+ dto.getBt_basicadd() + "<br>"
-			+ dto.getBt_detailadd();
-	
+String content
+	= "<strong>["+ dto.getName() +"님의 블루클리닝 "+ dto.getRegi_type() +" 내역]</strong><br><br>"
+	+ "<strong>일시 : </strong>"+ dto.getBc_date() +"<br>"
+	+ "<strong>장소 : </strong>"+ dto.getBc_basicadd() +"("+ dto.getBc_postcode() +") "+ dto.getBc_detailadd() +"<br>"
+	+ "<strong>평수 : </strong>"+ dto.getBc_space() +"평<br>"
+	+ "<strong>청소종류 : </strong>"+ dto.getBc_type() +"<br>"
+	+ "<strong>특이사항 : </strong>"+ dto.getNote();
+
 String htmlContent = "";
 try {
 	String templatePath = application.getRealPath("/emailSend/MailForm.html");
