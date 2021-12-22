@@ -5,10 +5,6 @@
 
 
 <head>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
 <!-- 부트스트랩3 CDN -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -82,6 +78,11 @@ function validateForm(form) {
 		form.address3.focus();
 		return false;
 	}
+	if (isNaN(form.address1.value)) {
+		alert("우편번호를 확인해주세요.");
+		form.postBtn.focus();
+		return false;
+	}
 	if (form.phone_num1.value == "") {
 		alert("연락처를 입력하세요.");
 		form.phone_num1.focus();
@@ -129,7 +130,11 @@ function validateForm(form) {
 	}
 }
 </script>
-<!-- 청소희망 날짜 datepicker적용 -->
+<!-- 체험 희망날짜 datepicker적용 -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
 <script>
 $( function() {
   $( "#datepicker" ).datepicker();
@@ -169,7 +174,7 @@ $( function() {
 						<tr>
 							<th rowspan="3">주소</th>
 							<td style="text-align:left;"><input type="text" name="address1"  value="" class="join_input" id="sample6_postcode" style="width:70px;" />
-							<button type="button" name="postBtn" class="btn btn-danger btn-xs" onclick="sample6_execDaumPostcode()">우편번호</button>
+							<button type="button" name="postBtn" class="btn btn-danger btn-xs" onclick="sample6_execDaumPostcode()">주소찾기</button>
 							</td>
 						</tr>
 						<tr>
@@ -206,7 +211,7 @@ $( function() {
 									</tr>
 									<tr>
 										<td style="border-bottom:0px;">분양평수/등기평수</td>
-										<td style="border:0px;"><input type="text" name="bc_space" value="" class="join_input" /> 평</td>
+										<td style="border:0px;"><input type="text" name="bc_space" value="" class="join_input" style="width: 50px; text-align: right;" placeholder="0" /> 평</td>
 									</tr>
 								</table>
 							</td>
@@ -222,16 +227,13 @@ $( function() {
 						</tr>
 						<tr>
 							<th>기타특이사항</th>
-							<td style="text-align:left;"><input type="text" name="note"  value="없음" class="join_input" style="width:400px;" /></td>
+							<td style="text-align:left;"><input type="text" name="note"  value="" class="join_input" style="width:400px;" placeholder="없음" /></td>
 						</tr>
 					</tbody>
 				</table>
-				<p style="text-align:center; margin-bottom:40px"><input type="image" src="../images/btn01.gif" /></a>&nbsp;&nbsp;<a href="../main/main.jsp"><img src="../images/btn02.gif" /></a></p>
+				<p style="text-align:center; margin-bottom:40px"><input type="image" src="../images/btn01.gif" />&nbsp;&nbsp;<a href="../main/main.jsp"><img src="../images/btn02.gif" /></a></p>
 				</form>
 			</div>
-			 
-			
-			
 		</div>
 		<%@ include file="../include/quick.jsp" %>
 	</div>

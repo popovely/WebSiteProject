@@ -11,22 +11,21 @@
 <%-- <%@ include file="./IsLoggedIn.jsp"%> --%>
 <%
 // 폼값 받기
-String name = request.getParameter("name");
-String bt_postcode = request.getParameter("address1");// 우편번호
-String bt_basicadd = request.getParameter("address2");// 기본주소
-String bt_detailadd = request.getParameter("address3");// 상세주소
+String name = request.getParameter("name");				// 고객명/회사명
 String phone_num = request.getParameter("phone_num1")
 	   			+"-"+ request.getParameter("phone_num2")
-	   			+"-"+ request.getParameter("phone_num3");
+	   			+"-"+ request.getParameter("phone_num3");// 연락처
 String email = request.getParameter("email1")
-				+"@"+  request.getParameter("email2");
-String bc_type = request.getParameter("bc_type");
-String bc_space = request.getParameter("bc_space");
-String bc_date = request.getParameter("bc_date");
-String regi_type = request.getParameter("regi_type");
-String note = request.getParameter("note");
+				+"@"+  request.getParameter("email2");	// 이메일
+String ft_cake = request.getParameter("ft_cake");		//케익체험 인원수
+String ft_cookie = request.getParameter("ft_cookie");	//쿠키체험 인원수
+String ft_date = request.getParameter("ft_date");		//체험 희망날짜
+String regi_type = request.getParameter("regi_type");	//접수종류 구분
+String note = request.getParameter("note");				//기타 특이사항
 
 if(note==""){ note="없음";}
+if(ft_cake==""){ft_cake="0";}
+if(ft_cookie==""){ft_cookie="0";}
 
 /*
 //확인용
@@ -44,35 +43,33 @@ out.println("note="+ note);
 // DTO객체 생성
 appFormDTO dto = new appFormDTO();
 dto.setName(name);
-dto.setBc_postcode(Integer.parseInt(bt_postcode));
-dto.setBc_basicadd(bt_basicadd);
-dto.setBc_detailadd(bt_detailadd);
 dto.setPhone_num(phone_num);
 dto.setEmail(email);
-dto.setBc_type(bc_type);
-dto.setBc_space(Integer.parseInt(bc_space));
-dto.setBc_date(bc_date);
+dto.setFt_cake(Integer.parseInt(ft_cake));
+dto.setFt_cookie(Integer.parseInt(ft_cookie));
+dto.setFt_date(ft_date);
 dto.setRegi_type(regi_type);
 dto.setNote(note);
 
 /* 이메일 전송 */
 Map<String, String> emailInfo = new HashMap<String, String>();
-////////////////////////////////차후 관리자 이메일로 변경
+//////////////////////////////// 차후 from의 value값을 관리자 이메일로 변경해야 함
 emailInfo.put("from", "bbi-bbi-@naver.com");
 emailInfo.put("to", dto.getEmail());
-emailInfo.put("subject", "[마포구립장애인 직업재활센터] 블루클리닝 신청정보 안내");
+//////////////////////////////// 차후 관리자 이메일로도 전송해야 함
+// emailInfo.put("to", dto.getEmail());
+emailInfo.put("subject", "[마포구립장애인 직업재활센터] 체험학습 신청정보 안내");
 
 String content
-	= "<strong>["+ dto.getName() +"님의 블루클리닝 "+ dto.getRegi_type() +" 내역]</strong><br><br>"
-	+ "<strong>일시 : </strong>"+ dto.getBc_date() +"<br>"
-	+ "<strong>장소 : </strong>"+ dto.getBc_basicadd() +"("+ dto.getBc_postcode() +") "+ dto.getBc_detailadd() +"<br>"
-	+ "<strong>평수 : </strong>"+ dto.getBc_space() +"평<br>"
-	+ "<strong>청소종류 : </strong>"+ dto.getBc_type() +"<br>"
+	= "<strong>["+ dto.getName() +"님의 체험학습 "+ dto.getRegi_type() +" 내역]</strong><br><br>"
+	+ "<strong>일시 : </strong>"+ dto.getFt_date() +"<br>"
+	+ "<strong>케이크 만들기 신청 인원수 : </strong>"+ dto.getFt_cake() +"명<br>"
+	+ "<strong>쿠키 만들기 신청 인원수 : </strong>"+ dto.getFt_cookie() +"명<br>"
 	+ "<strong>특이사항 : </strong>"+ dto.getNote();
 
 String htmlContent = "";
 try {
-	String templatePath = application.getRealPath("/emailSend/BCMailForm.html");
+	String templatePath = application.getRealPath("/emailSend/FTMailForm.html");
 	BufferedReader br = new BufferedReader(new FileReader(templatePath));
 	
 	String oneLine;
